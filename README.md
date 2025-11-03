@@ -1,5 +1,4 @@
-Mochi Mood Log App
-This is a tool allows users to log the emotional state of the ticket queue throughout the day and visualize trends. The backend mood entry record is stored in Google Sheets.
+Mochi Mood Log App is a tool allows users to log the emotional state of the ticket queue throughout the day and visualize trends. The backend mood entry record is stored in Google Sheets.
 
 Features
 1. Log a mood with one click and optional comment 
