@@ -1,5 +1,7 @@
 import datetime
 import pandas as pd
+import json
+import streamlit as st
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
@@ -10,11 +12,17 @@ RANGE_NAME = "Sheet1!A:C"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 #method to open to google sheets
+#def get_sheet_service():
+#    creds = Credentials.from_service_account_file(
+       # "my-project-2025-477105-40e880fb878b.json",
+#        scopes=SCOPES  )
+#    service = build("sheets", "v4", credentials=creds)
+#    return service.spreadsheets()
+
+#call streamlit secret
 def get_sheet_service():
-    creds = Credentials.from_service_account_file(
-        "my-project-2025-477105-40e880fb878b.json",
-        scopes=SCOPES
-    )
+    creds_dict = json.loads(st.secrets["GOOGLE_SA_JSON"])
+    creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
     service = build("sheets", "v4", credentials=creds)
     return service.spreadsheets()
 
