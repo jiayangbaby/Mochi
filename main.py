@@ -21,8 +21,10 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 #call streamlit secret
 def get_sheet_service():
-    creds_dict = json.loads(st.secrets["GOOGLE_SA_JSON"])
-    creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+    creds = Credentials.from_service_account_info(
+        st.secrets["GOOGLE_SA_JSON"],
+        scopes=SCOPES
+    )
     service = build("sheets", "v4", credentials=creds)
     return service.spreadsheets()
 
